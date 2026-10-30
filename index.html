@@ -444,10 +444,25 @@ h2 {
   flex: 1 1 16rem;
 }
 .footer__meta { font-size: 0.875rem; color: var(--ink-soft); }
+.to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font: 500 0.75rem/1 var(--text);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--clay-ink);
+  padding: 10px 0;
+}
+.to-top svg { width: 14px; height: 14px; transition: transform 0.2s ease; }
+.to-top:hover svg { transform: translateY(-2px); }
+html { scroll-behavior: smooth; }
 
 @media (prefers-reduced-motion: reduce) {
   .status__dot::after { animation: none; display: none; }
-  .btn, .btn svg { transition: none; }
+  .btn, .btn svg, .to-top svg { transition: none; }
+  html { scroll-behavior: auto; }
 }
 </style>
 </head>
@@ -581,6 +596,9 @@ h2 {
     <p class="mini-mark"><span class="mini-mark__name">Haven</span> <span class="mini-mark__sub">Home &amp; Life</span></p>
     <p class="footer__tag">Thoughtful care for your home and everyday life.</p>
     <p class="footer__meta">© 2026 Haven Home &amp; Life · The Garraf, Barcelona</p>
+    <a class="to-top" href="#top">Back to top
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13.5v-11M3.5 7 8 2.5 12.5 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
   </div>
 </footer>
 </body>
