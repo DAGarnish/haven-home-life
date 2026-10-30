@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Haven Home &amp; Life | Home Watch &amp; Relocation Help in the Garraf</title>
+<meta name="description" content="Haven Home &amp; Life: home watch, home care and relocation support in the Garraf and surrounding areas, including Sitges, Sant Pere de Ribes and Vilanova i la Geltrú. Coming soon.">
+<meta name="theme-color" content="#E7D8C6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1B1D14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Haven Home &amp; Life">
+<meta property="og:title" content="Haven Home &amp; Life">
+<meta property="og:description" content="Thoughtful care for your home and everyday life. Home watch, home care and relocation support in the Garraf. Coming soon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap">
+<style>
+/* Layout: the poster becomes the hero (a sunlit terrace above the bay, with the wordmark set in its sky), followed by linen, sand and olive bands that echo the poster's lower panel. */
+:root {
+  --ground: #E7D8C6;      /* sand, sampled from the poster's lower panel */
+  --paper: #F2EADF;       /* lighter linen for the services band */
+  --ink: #373B22;         /* olive, sampled from the wordmark */
+  --ink-soft: #545A3C;
+  --clay: #A4613C;        /* terracotta, sampled from the map pin */
+  --clay-ink: #8E4F2C;    /* terracotta deep enough for small text */
+  --rule: #CDBDA5;
+  --band: #373B22;
+  --band-ink: #EFE6D6;
+  --band-soft: #CBC3AB;
+  --band-accent: #E0A07A;
+  --shadow: rgba(55, 59, 34, 0.28);
+  --on-sky: #373B22;      /* wordmark on the photo: identical in both themes */
+  --sky-top: #A3C4E6;
+  --sky-low: #DCE6EC;
+  --photo-low: #B9A58A;
+  --display: "Cormorant Garamond", "Cormorant", Garamond, "Times New Roman", serif;
+  --text: "Jost", "Futura", "Avenir Next", "Century Gothic", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #1B1D14;
+    --paper: #22251A;
+    --ink: #EDE3D1;
+    --ink-soft: #BDB49F;
+    --clay: #D38A60;
+    --clay-ink: #DE9A72;
+    --rule: #3A3E2D;
+    --band: #2B2F20;
+    --band-ink: #EDE3D1;
+    --band-soft: #BDB49F;
+    --band-accent: #E0A07A;
+    --shadow: rgba(0, 0, 0, 0.55);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #1B1D14;
+  --paper: #22251A;
+  --ink: #EDE3D1;
+  --ink-soft: #BDB49F;
+  --clay: #D38A60;
+  --clay-ink: #DE9A72;
+  --rule: #3A3E2D;
+  --band: #2B2F20;
+  --band-ink: #EDE3D1;
+  --band-soft: #BDB49F;
+  --band-accent: #E0A07A;
+  --shadow: rgba(0, 0, 0, 0.55);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--text);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, p, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
+
+.wrap {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 700px) {
+  .wrap {
+    padding-left: max(40px, env(safe-area-inset-left, 0px));
+    padding-right: max(40px, env(safe-area-inset-right, 0px));
+  }
+}
+
+/* Shared type */
+.eyebrow {
+  font: 500 0.78rem/1.3 var(--text);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--clay-ink);
+}
+h2 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(2rem, 1.35rem + 2.2vw, 3.05rem);
+  line-height: 1.06;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+.section-head {
+  display: grid;
+  gap: 14px;
+  max-width: 40rem;
+  margin-bottom: clamp(36px, 5vw, 60px);
+}
+.band { padding-block: clamp(64px, 8vw, 108px); }
+
+/* Status chip */
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font: 500 0.75rem/1 var(--text);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--clay-ink);
+  padding: 9px 14px 9px 12px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+}
+.status__dot {
+  position: relative;
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--clay);
+}
+.status__dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--clay);
+  animation: ping 2.6s ease-out infinite;
+}
+@keyframes ping {
+  0% { transform: scale(1); opacity: 0.55; }
+  70%, 100% { transform: scale(3); opacity: 0; }
+}
+
+/* Hero: the poster */
+.hero__inner { display: grid; }
+.poster {
+  position: relative;
+  container-type: inline-size;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-low) 50%, var(--photo-low) 100%);
+}
+.poster img {
+  width: 100%;
+  aspect-ratio: 1024 / 1064;
+  object-fit: cover;
+}
+/* Positions mirror the printed poster: every size is a share of the photo's width */
+.poster__mark {
+  position: absolute;
+  top: 13.81cqw;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: var(--on-sky);
+}
+.wordmark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 400;
+}
+.wordmark__name {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 17.58cqw;
+  line-height: 0.82;
+  letter-spacing: 0.01em;
+  margin-right: -0.01em;
+  text-transform: uppercase;
+}
+.wordmark__sub {
+  margin-top: 1.04cqw;
+  font-family: var(--text);
+  font-weight: 400;
+  font-size: 4.19cqw;
+  line-height: 1;
+  letter-spacing: 0.31em;
+  margin-right: -0.31em;
+  text-transform: uppercase;
+}
+.poster__rule {
+  display: block;
+  width: 7.52cqw;
+  height: max(1.5px, 0.2cqw);
+  margin-top: 2.97cqw;
+  background: var(--on-sky);
+}
+.poster__tagline {
+  margin-top: 2.95cqw;
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 4.69cqw;
+  line-height: 1.0625;
+}
+.poster__tagline span { display: block; white-space: nowrap; }
+
+/* Hero: introduction */
+.hero__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+  padding-block: 40px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.lede {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(2rem, 1.4rem + 2vw, 2.85rem);
+  line-height: 1.08;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+  max-width: 19ch;
+}
+.hero__copy { display: grid; gap: 14px; max-width: 34rem; color: var(--ink-soft); }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+  padding: 16px 22px;
+  font: 500 0.8rem/1 var(--text);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ground);
+  background: var(--ink);
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
+}
+.btn:hover { background: var(--ink-soft); }
+.btn svg { width: 14px; height: 14px; transition: transform 0.2s ease; }
+.btn:hover svg { transform: translateY(2px); }
+
+@media (min-width: 700px) {
+  .hero__inner {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-block: 40px 80px;
+    padding-left: max(40px, env(safe-area-inset-left, 0px));
+    padding-right: max(40px, env(safe-area-inset-right, 0px));
+  }
+  .poster {
+    border-radius: 4px;
+    box-shadow: 0 44px 70px -44px var(--shadow);
+  }
+  .hero__intro {
+    padding-block: 44px 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media (min-width: 700px) and (max-width: 899.98px) {
+  .hero__inner { max-width: 760px; }
+}
+@media (min-width: 900px) {
+  .hero__inner {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(48px, 6vw, 88px);
+    align-items: center;
+    padding-block: 48px 96px;
+  }
+  .hero__intro { padding-block: 0; }
+}
+
+/* Services */
+.services {
+  background: var(--paper);
+  border-block: 1px solid var(--rule);
+}
+.services__grid { display: grid; }
+.service {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding-block: 32px;
+}
+.service:first-child { padding-top: 0; }
+.service:last-child { padding-bottom: 0; }
+.service + .service { border-top: 1px solid var(--rule); }
+.icon {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.icon .solid { fill: currentColor; stroke: none; }
+.icon .knock { stroke: var(--paper); stroke-width: 2; }
+.service__icon { width: 52px; height: 52px; color: var(--ink); margin-bottom: 10px; }
+.service h3 {
+  font: 500 0.84rem/1.45 var(--text);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.service__hook {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.55rem;
+  line-height: 1.2;
+}
+.service__copy { color: var(--ink-soft); max-width: 34rem; }
+@media (min-width: 860px) {
+  .services__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .service, .service:first-child, .service:last-child { padding-block: 4px; }
+  .service { padding-inline: 40px; }
+  .service:first-child { padding-left: 0; }
+  .service:last-child { padding-right: 0; }
+  .service + .service { border-top: 0; border-left: 1px solid var(--rule); }
+  .service h3 { min-height: 2.9em; }
+}
+
+/* Who it's for */
+.audience__grid { display: grid; gap: 28px; }
+.who {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--ink);
+}
+.who h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 1.15;
+}
+.who p { color: var(--ink-soft); max-width: 30rem; }
+@media (min-width: 760px) {
+  .audience__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; }
+}
+
+/* Area and close */
+.area { background: var(--band); color: var(--band-ink); }
+.area__grid { display: grid; gap: 56px; }
+.area__where { display: grid; justify-items: start; gap: 14px; }
+.pin { width: 34px; height: 34px; color: var(--band-accent); margin-bottom: 6px; }
+.area .eyebrow { color: var(--band-accent); }
+.towns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 16px;
+  margin-top: 16px;
+  width: 100%;
+  max-width: 34rem;
+  font-size: 1rem;
+  color: var(--band-soft);
+}
+.towns li { display: flex; align-items: baseline; gap: 10px; }
+.towns li::before {
+  content: "";
+  flex: none;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--band-accent);
+  transform: translateY(-3px);
+}
+.area__close { display: grid; justify-items: start; gap: 22px; }
+.closing {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.75rem, 1.25rem + 1.6vw, 2.5rem);
+  line-height: 1.15;
+  text-wrap: balance;
+  max-width: 24ch;
+}
+.closing__note { color: var(--band-soft); max-width: 30rem; }
+.status--band { color: var(--band-accent); border-color: color-mix(in srgb, var(--band-ink) 28%, transparent); }
+.status--band .status__dot, .status--band .status__dot::after { background: var(--band-accent); }
+@media (min-width: 900px) {
+  .area__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 96px;
+    align-items: end;
+  }
+  .towns { gap: 12px 24px; }
+}
+
+/* Footer */
+.site-footer { background: var(--ground); }
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px 40px;
+  padding-block: 40px;
+}
+.mini-mark { display: grid; justify-items: center; line-height: 1; color: var(--ink); }
+.mini-mark__name {
+  font: 500 2.1rem/0.85 var(--display);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.mini-mark__sub {
+  margin-top: 7px;
+  margin-right: -0.31em;
+  font: 400 0.62rem/1 var(--text);
+  letter-spacing: 0.31em;
+  text-transform: uppercase;
+}
+.footer__tag {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  flex: 1 1 16rem;
+}
+.footer__meta { font-size: 0.875rem; color: var(--ink-soft); }
+
+@media (prefers-reduced-motion: reduce) {
+  .status__dot::after { animation: none; display: none; }
+  .btn, .btn svg { transition: none; }
+}
+</style>
+</head>
+<body>
+<header class="hero" id="top">
+  <div class="hero__inner">
+    <div class="poster">
+      <img src="images/haven-terrace.jpg" width="1024" height="1064" fetchpriority="high"
+           alt="A sunlit terrace with a linen sofa, olive trees and bougainvillea, looking out over a Mediterranean bay with white houses and a sailing boat.">
+      <div class="poster__mark">
+        <h1 class="wordmark"><span class="wordmark__name">Haven</span> <span class="wordmark__sub">Home &amp; Life</span></h1>
+        <span class="poster__rule" aria-hidden="true"></span>
+        <p class="poster__tagline"><span>Thoughtful care for your home</span> <span>and everyday life.</span></p>
+      </div>
+    </div>
+
+    <div class="hero__intro">
+      <p class="status"><span class="status__dot" aria-hidden="true"></span>Coming soon</p>
+      <p class="lede">A new way to feel at home in the Garraf and surrounding areas.</p>
+      <div class="hero__copy">
+        <p>We’re excited to introduce Haven Home &amp; Life, a new local service created to make life easier, whether you live here permanently, own a second home, or are just starting a new chapter in Spain.</p>
+        <p>From taking care of your property while you’re away to helping you settle into your new life, we’re here to offer reliable, personalised support you can count on.</p>
+      </div>
+      <a class="btn" href="#services">See our services
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5v11M3.5 9 8 13.5 12.5 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="services band" id="services" aria-labelledby="services-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Our services</p>
+        <h2 id="services-title">Reliable, personalised support you can count on.</h2>
+      </div>
+
+      <div class="services__grid">
+        <article class="service">
+          <svg class="icon service__icon" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M24 4.5 39.5 10v12.2c0 10-6.6 17.7-15.5 21.3C15.1 39.9 8.5 32.2 8.5 22.2V10Z"/>
+            <path class="solid" fill-rule="evenodd" d="M16.5 25.6 24 19.1l7.5 6.5V33h-15Zm5.3 7.4v-4.7h4.4V33Z"/>
+          </svg>
+          <h3>Home Watch &amp; Second Home Care</h3>
+          <p class="service__hook">Your home, in safe hands.</p>
+          <p class="service__copy">Peace of mind while you’re away. We help keep an eye on your property and make sure your home is looked after.</p>
+        </article>
+
+        <article class="service">
+          <svg class="icon service__icon" viewBox="0 0 48 48" aria-hidden="true">
+            <g transform="rotate(-45 24 24)">
+              <rect x="20.5" y="3.5" width="7" height="13" rx="3"/>
+              <path d="M22 16.5h4v3h-4ZM24 19.5V37.5M22.6 37.5h2.8l-.6 4.5h-1.6Z"/>
+            </g>
+            <g transform="rotate(45 24 24)">
+              <path d="M21.8 3.38V9h4.4V3.38A6.5 6.5 0 0 1 26.2 15.62V36a2.2 2.2 0 0 1-4.4 0V15.62A6.5 6.5 0 0 1 21.8 3.38Z"/>
+            </g>
+          </svg>
+          <h3>Home Care &amp; Local Services</h3>
+          <p class="service__hook">Reliable help, when you need it.</p>
+          <p class="service__copy">Practical help with everyday needs, trusted local contacts, and assistance coordinating services for your home.</p>
+        </article>
+
+        <article class="service">
+          <svg class="icon service__icon" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M27.4 41.5H12V5.5h16l8 8v13.6"/>
+            <path d="M28 5.5v8h8M17 18h11M17 23.5h13M17 29h8"/>
+            <circle class="solid" cx="34.5" cy="36" r="7.5"/>
+            <path class="knock" d="m31.2 36.2 2.3 2.3 4.4-4.8"/>
+          </svg>
+          <h3>Relocation &amp; Paperwork Assistance</h3>
+          <p class="service__hook">Less admin, more time for you.</p>
+          <p class="service__copy">Moving to Spain can feel overwhelming. We can help you navigate everyday administrative procedures, organise documentation, register with your local healthcare centre (CAP), and find your way around the local system.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="audience band" aria-labelledby="audience-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Who it’s for</p>
+        <h2 id="audience-title">Created to make life easier</h2>
+      </div>
+      <ul class="audience__grid">
+        <li class="who">
+          <h3>Living here permanently</h3>
+          <p>Practical help at home and trusted local contacts for everyday needs.</p>
+        </li>
+        <li class="who">
+          <h3>Owning a second home</h3>
+          <p>Someone local to keep an eye on your property while you’re away.</p>
+        </li>
+        <li class="who">
+          <h3>Starting a new chapter</h3>
+          <p>New to Spain? A helping hand with paperwork, your local health centre and finding your way around.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="area band" id="area" aria-labelledby="area-title">
+    <div class="wrap area__grid">
+      <div class="area__where">
+        <svg class="pin" viewBox="0 0 48 48" aria-hidden="true">
+          <path fill="currentColor" fill-rule="evenodd" d="M24 45s14-13.3 14-25a14 14 0 1 0-28 0c0 11.7 14 25 14 25Zm0-19.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z"/>
+        </svg>
+        <p class="eyebrow">Our area</p>
+        <h2 id="area-title">The Garraf &amp; surrounding areas</h2>
+        <ul class="towns" aria-label="Towns in the Garraf">
+          <li>Sitges</li>
+          <li>Sant Pere de Ribes</li>
+          <li>Vilanova i la Geltrú</li>
+          <li>Olivella</li>
+          <li>Canyelles</li>
+          <li>Cubelles</li>
+        </ul>
+      </div>
+      <div class="area__close">
+        <p class="closing">Whether you need someone to look after your home or a helping hand settling into the area, we’re here for you.</p>
+        <p class="closing__note">A new local service — currently building our trusted network.</p>
+        <p class="status status--band"><span class="status__dot" aria-hidden="true"></span>Coming soon</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer__inner">
+    <p class="mini-mark"><span class="mini-mark__name">Haven</span> <span class="mini-mark__sub">Home &amp; Life</span></p>
+    <p class="footer__tag">Thoughtful care for your home and everyday life.</p>
+    <p class="footer__meta">© 2026 Haven Home &amp; Life · The Garraf, Barcelona</p>
+  </div>
+</footer>
+</body>
+</html>
